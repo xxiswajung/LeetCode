@@ -14,7 +14,7 @@ class Solution:
             lf=DFS(root.left)
             rg=DFS(root.right)
             self.maxx=max(self.maxx,lf+rg) #caculate total max diameter, used for final answer
-            return max(lf,rg) +1 #caulate only for this node's diameter, return the value of "DFS"
+            return max(lf,rg) +1 #calculate only for this node's diameter, return the value of "DFS"
         
         self.maxx=0
         DFS(root)
