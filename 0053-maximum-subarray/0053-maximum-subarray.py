@@ -4,7 +4,9 @@ class Solution:
         summ = 0
 
         for num in nums:
-            summ = max(num, summ + num)
+            if summ<0:
+                summ=0
+            summ+=num
             ans = max(ans, summ)
 
         return ans
