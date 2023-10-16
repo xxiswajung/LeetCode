@@ -21,7 +21,7 @@ class Solution:
                 for t in range(4):
                     xx=i+dx[t]
                     yy=j+dy[t]
-                    if 0<=xx<m and 0<=yy<n and mat[xx][yy]>mat[i][j]+1: #초기:무한대로 초기화했으니 당연 -> 중반:0과의 거리를 기록한 cell들로 기록을 이어받을 수 있음
+                    if 0<=xx<m and 0<=yy<n and mat[xx][yy]>mat[i][j]+1: #+1이 없으면 이미 갱신된 셀을 또 갱신할 수 있으므로, 1보다 더 큰 셀 즉, 아직 갱신이 안된 무한대 값을 가진 셀을 찾기 위한 조건.
                         mat[xx][yy]=mat[i][j]+1
                         Q.append((xx,yy))
         return mat
