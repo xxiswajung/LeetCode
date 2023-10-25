@@ -12,6 +12,8 @@ class Solution:
         for i in range(numCourses):
             if degree[i]==0:
                 Q.append(i)
+        if len(Q)==0:
+            return False
         
         while Q:
             item=Q.popleft()
@@ -22,5 +24,3 @@ class Solution:
                         Q.append(i)
         if sum(degree)==0:
             return True
-        else:
-            return False
