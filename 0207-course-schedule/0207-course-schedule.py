@@ -27,23 +27,27 @@ class Solution:
 #         else:
 #             return False
 
-        graph = [[] for _ in range(numCourses)]
+        graph = [[] for _ in range(numCourses)] #강의 수강 후 들을 수 있는 강의리스트
         traced, visited = set(), set()
         for x, y in prerequisites:
             graph[x].append(y) #x의 선수과목 y들 저장
             
         def dfs(i): 
+            #순환 구조면 False
             if i in traced:
                 return False
+            #이미 방문했던 노드면 True
             if i in visited:
                 return True
             traced.add(i) #graph[i]가 빈 경우 = 선수과목이 없는 경우 -? 실행 x, True
         
             #선수과목 불러옴, 반복하면서 traced에 남아있으면 False
             for y in graph[i]:
-                if not dfs(y):
+                if not dfs(y): #이미 방문한 적이 있는 경우
                     return False
+            #탐색 종료 후 순한노드 삭제
             traced.remove(i)
+            #탐색 종료 후 방문노드 추가
             visited.add(i)
             return True
     
