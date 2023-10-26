@@ -36,10 +36,11 @@ class Solution:
             #순환 구조면 False
             if i in traced:
                 return False
-            #이미 방문했던 노드면 True
+            #이미 방문했던 노드면 True (=완전히 탐색이 끝난 코드)
             if i in visited:
                 return True
-            traced.add(i) #graph[i]가 빈 경우 = 선수과목이 없는 경우 -? 실행 x, True
+            #traced에도 없고 visited에도 없다면 traced에 추가해줌
+            traced.add(i) 
         
             #선수과목 불러옴, 반복하면서 traced에 남아있으면 False
             for y in graph[i]:
