@@ -1,6 +1,6 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        init=100000
+        init=inf
         dy=[init]*(amount+1)
         dy[0]=0
         for i in coins:
