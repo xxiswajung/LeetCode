@@ -3,7 +3,7 @@ class Solution:
         ans = []   
         nums.sort()
         #nums=[-4,-1,-1,0,1,2]
-        for i in range(len(nums)):
+        for i in range(len(nums)-2):
             # 정렬을 했는데도 현재 값과 이전 값이 같으면 볼 필요 없음, 0이 안됨
             if i!=0 and nums[i]==nums[i-1]:
                 continue
