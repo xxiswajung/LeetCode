@@ -1,16 +1,12 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        d=dict()
-        s=list(s)
-        t=list(t)
-        for i in range(97,123):
-            d[i]=0
-        for x in s:
-            d[ord(x)]+=1
-        for y in t:
-            d[ord(y)]-=1
-        for i in range(97,123):
-            if d[i]!=0:
+        word=defaultdict(int)
+        for i in s:
+            word[i]+=1
+        for j in t:
+            word[j]-=1
+        for x in word:
+            if word[x]!=0:
                 return False
         else:
             return True
