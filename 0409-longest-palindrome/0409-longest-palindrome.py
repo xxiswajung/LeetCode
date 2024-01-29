@@ -1,16 +1,16 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        s=list(s)
-        txt=Counter(s)
-        answer=0
-        maxx=0
-        for i in txt:
-            if txt[i]%2==0:
-                answer+=txt[i]
+        letter = Counter(s)
+        answer = 0
+        odd = 0 
+        
+        for x in letter:
+            if letter[x]%2==0:
+                answer+=letter[x]
             else:
-                maxx=max(maxx,txt[i])
-                answer+=txt[i]-1
-        if maxx!=0:
+                odd=max(odd,letter[x])
+                answer+=letter[x]-1
+        if odd!=0:
             return answer+1
         else:
             return answer
