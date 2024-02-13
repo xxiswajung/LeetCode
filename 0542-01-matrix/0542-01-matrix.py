@@ -1,32 +1,24 @@
-from collections import deque
-
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
-        def valid(row, col):
-            return 0 <= row < m and 0 <= col < n
+        dx=[-1,0,1,0]
+        dy=[0,1,0,-1]
+        dis=[[0]*len(mat[0]) for _ in range(len(mat))]
+        Q=deque()
         
-        matrix = [row[:] for row in mat]
-        m = len(matrix)
-        n = len(matrix[0])
-        queue = deque()
-        seen = set()
+        for x in range(len(mat)):
+            for y in range(len(mat[0])):
+                if mat[x][y]:
+                    mat[x][y]=10000000
+                else: #mat[x][y]==1 or 자연수
+                    Q.append((x,y))
         
-        for row in range(m):
-            for col in range(n):
-                if matrix[row][col] == 0:
-                    queue.append((row, col, 0))
-                    seen.add((row, col))
-        
-        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-
-        while queue:
-            row, col, steps = queue.popleft()
-            
-            for dx, dy in directions:
-                next_row, next_col = row + dy, col + dx
-                if (next_row, next_col) not in seen and valid(next_row, next_col):
-                    seen.add((next_row, next_col))
-                    queue.append((next_row, next_col, steps + 1))
-                    matrix[next_row][next_col] = steps + 1
-        
-        return matrix
+        while Q:
+            x,y=Q.popleft()
+            cnt=1
+            for i in range(4):
+                xx=x+dx[i]
+                yy=y+dy[i]
+                if 0<=xx<len(mat) and 0<=yy<len(mat[0]) and mat[xx][yy]>mat[x][y]+1:
+                    mat[xx][yy]=mat[x][y]+1
+                    Q.append((xx,yy))
+        return mat
