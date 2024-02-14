@@ -6,21 +6,20 @@ class Solution:
         for i in range(len(nums)):
             if i!=0 and nums[i]==nums[i-1]:
                 continue
-            l=i+1
-            r=len(nums)-1
+            j=i+1
+            k=len(nums)-1
             
-            while l<r:
-                total=nums[i]+nums[l]+nums[r]
+            while j<k:
+                total=nums[i]+nums[j]+nums[k]
                 if total==0:
-                    answer.append([nums[i],nums[l],nums[r]])
-                    l+=1
-                    while l<r and nums[l]==nums[l-1]:
-                        l+=1
+                    answer.append([nums[i],nums[j],nums[k]])
+                    while j<k and nums[j]==nums[j+1]:
+                        j+=1
+                    # while j<k and nums[k]==nums[k-1]:
+                    #     k-=1
+                    j+=1
                 elif total<0:
-                    l+=1
+                    j+=1
                 else:
-                    r-=1
+                    k-=1
         return answer
-        
-            
-            
