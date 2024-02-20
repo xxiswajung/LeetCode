@@ -3,8 +3,6 @@ class Solution:
         init=inf
         dy=[init]*(amount+1)
         dy[0]=0
-        if min(coins)>amount and amount!=0:
-            return -1
         for x in coins:
             for y in range(x,len(dy)):
                 dy[y]=min(dy[y],dy[y-x]+1)
