@@ -4,10 +4,10 @@ class Solution:
         dy=[0,1,0,-1]
         xlen=len(grid)
         ylen=len(grid[0])
-        result=0
+        minute=0
         visited=[[0]*ylen for _ in range(xlen)]
         Q=deque()
-        children=[]
+
         for x in range(xlen):
             for y in range(ylen):
                 if grid[x][y]==2:
@@ -15,7 +15,7 @@ class Solution:
         
         while Q:
             x,y,minute=Q.popleft()
-            result=max(minute,result)
+            # result=max(minute,result)
             for i in range(4):
                 xx=x+dx[i]
                 yy=y+dy[i]
@@ -29,4 +29,4 @@ class Solution:
                 if grid[x][y]==1:
                     return -1
         else:
-            return result
+            return minute
