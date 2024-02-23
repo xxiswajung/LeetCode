@@ -1,21 +1,17 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        visit=[0]*len(nums)
-        answer=[]
         
-        
-        def DFS(v,arr):
+        def DFS(v,tmp,chk):
             if v==len(nums):
-                answer.append(arr.copy())
+                answer.append(tmp.copy())
                 return
-            else:
-                for i in range(len(nums)):
-                    if visit[i]==0:
-                        visit[i]=1
-                        arr.append(nums[i])
-                        DFS(v+1,arr)
-                        visit[i]=0
-                        arr.pop()
-                        
-        DFS(0,[])  
+            for i in range(len(nums)):
+                if chk[i]==0:
+                    chk[i]=1
+                    tmp.append(nums[i])
+                    DFS(v+1,tmp,chk)
+                    chk[i]=0
+                    tmp.pop()
+        answer=[]
+        DFS(0,[],[0]*len(nums))
         return answer
