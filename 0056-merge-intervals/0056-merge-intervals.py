@@ -3,10 +3,9 @@ class Solution:
         intervals=sorted(intervals,key=lambda x:x[0])
         answer=[intervals[0]]
         
-        for i in range(1,len(intervals)):
-            if intervals[i][0]<=answer[-1][1]:
-                answer[-1]=[answer[-1][0],max(answer[-1][1],intervals[i][1])]
+        for s,e in intervals:
+            if s<=answer[-1][1]:
+                answer[-1]=[answer[-1][0],max(answer[-1][1],e)]
             else:
-                answer.append(intervals[i])
-        
+                answer.append([s,e])
         return answer
