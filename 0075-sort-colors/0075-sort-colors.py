@@ -3,8 +3,12 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        for i in range(len(nums)):
-            for j in range(len(nums)-i-1):
-                if nums[j]>nums[j+1]:
-                    nums[j],nums[j+1]=nums[j+1],nums[j]
-        print(nums)
+        while True:
+            if all(nums[i]<=nums[i+1] for i in range(len(nums)-1)):
+                break
+            p,q=0,1
+            while q<len(nums):
+                if nums[p]>nums[q]:
+                    nums[p], nums[q] = nums[q], nums[p]
+                p+=1
+                q+=1
