@@ -3,12 +3,18 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        while True:
-            if all(nums[i]<=nums[i+1] for i in range(len(nums)-1)):
-                break
-            p,q=0,1
-            while q<len(nums):
-                if nums[p]>nums[q]:
-                    nums[p], nums[q] = nums[q], nums[p]
-                p+=1
-                q+=1
+        red, white, blue = 0, 0, len(nums)-1
+        #red : start, white : mid, blue : end
+        
+        while white<=blue:
+            cur=nums[white]
+            if cur==0:
+                nums[white], nums[red]= nums[red], nums[white]
+                red+=1
+                white+=1
+            elif cur==1:
+                white+=1
+            else:
+                nums[white], nums[blue]=nums[blue], nums[white]
+                blue-=1
+                
