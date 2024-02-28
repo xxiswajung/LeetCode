@@ -1,18 +1,19 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        ch=[0]*(max(nums)+1)
-        res=[]
-        ans=[]
-        def DFS(v):
+        
+        def DFS(v,check):
             if v==len(nums):
-                ans.append(res.copy())
+                pre=[]
+                for i in range(len(check)):
+                    if check[i]==1:
+                        pre.append(nums[i])
+                answer.append(pre)
                 return
-            else:
-                ch[nums[v]]=1
-                res.append(nums[v])
-                DFS(v+1)
-                ch[nums[v]]=0
-                res.pop()
-                DFS(v+1)
-        DFS(0)
-        return ans
+            check[v-1]=1
+            DFS(v+1,check)
+            check[v-1]=0
+            DFS(v+1,check)
+        
+        answer=[]
+        DFS(0,[0]*len(nums))
+        return answer
