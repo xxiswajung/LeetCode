@@ -1,20 +1,36 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        ans=[]
+        # m=len(matrix[0])
+        # n=len(matrix)
+        # answer=[]
+        # i=0
+        # while len(answer)!=m*n:
+        #     for p in range(i,m-i-1):
+        #         answer.append(matrix[i][p])
+        #     for q in range(i,n-i-1):
+        #         answer.append(matrix[q][m-i-1])
+        #     for p in range(m-i-1,i,-1):
+        #         answer.append(matrix[n-i-1][p])
+        #     for q in range(n-i-1,i,-1):
+        #         answer.append(matrix[q][i])
+        #     i+=1
+        # return answer
+        
+        answer=[]
         
         while matrix:
-            #1.3시 방향 : 원래 순서 그대로 저장
-            ans+=matrix.pop(0)
-
-            #2.6시 방향 : 각 줄의 끝의 원소만 저장
-            if matrix and matrix[0]: #matrix[0]을 넣어야 하는 이유: [[1],[2],[3],[4],[5],[6],[7],[8],[9]] 일때, row.pop()하면 껍데기[]만 남음=matrix[0] is False
+            answer+=matrix.pop(0)
+            
+            if matrix and matrix[0]:
                 for row in matrix:
-                    ans.append(row.pop())
-            #3.9시 방향 : 맨 끝의 배열을 역순으로 저장
+                    answer.append(row.pop())
+            
             if matrix:
-                ans+=matrix.pop()[::-1]
-            #4.12시 방향 : 각 줄을 거꾸로, 맨 앞의 원소만 저장
+                answer+=matrix.pop()[::-1]
+            
             if matrix and matrix[0]:
                 for row in matrix[::-1]:
-                    ans.append(row.pop(0))
-        return ans
+                    answer.append(row.pop(0))
+        
+        return answer
+        
