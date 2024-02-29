@@ -26,5 +26,4 @@ class Solution:
                     left,right=l2,r2
         
         return s[left:right+1]
-        return answer
         
