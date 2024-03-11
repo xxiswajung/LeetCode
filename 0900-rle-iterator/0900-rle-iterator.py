@@ -16,9 +16,7 @@ class RLEIterator:
             if self.arr[0]==0:
                 self.arr.pop(0)
                 self.arr.pop(0)
-                
-        if n>0:
-            return -1
+
         return num
 
 
