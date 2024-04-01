@@ -3,7 +3,7 @@ class Solution:
         s,e=0,len(height)-1
         result=0
         
-        while s<=e and True:
+        while s<e:
             result = max(result,(e-s)*min(height[e],height[s]))
             
             if height[e]>height[s]:
