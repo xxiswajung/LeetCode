@@ -17,7 +17,7 @@ class Solution:
                 for i in range(len(phone[item])):
                     tmp+=phone[item][i]
                     DFS(v+1)
-                    tmp=tmp[:len(tmp)-1]
+                    tmp=tmp[:-1]
         DFS(0)
         return answer
             
